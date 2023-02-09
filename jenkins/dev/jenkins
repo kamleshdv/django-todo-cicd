@@ -9,7 +9,7 @@ node ('local') {
 //------------------------------------------------------Code-Clone-----------------------------------------------------------------//
 
   stage 'Cloning Git'
-  git credentialsId:'jenkins-server-local', url:'gitgit@github.com:kamleshdv/django-todo-cicd.git', branch:'main'
+  git credentialsId:'jenkins-server-local', url:'https://github.com/kamleshdv/django-todo-cicd.git', branch:'main'
 
 
 //------------------------------------------------------Building-------------------------------------------------------------------//
