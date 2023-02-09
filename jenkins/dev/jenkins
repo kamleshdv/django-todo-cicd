@@ -1,0 +1,38 @@
+node ('local') {
+    try {
+
+//------------------------------------------------------ECR-Login-----------------------------------------------------------------//
+
+  stage 'ECR login'
+    sh("eval \$(aws ecr get-login --no-include-email --region ca-central-1)")
+
+//------------------------------------------------------Code-Clone-----------------------------------------------------------------//
+
+  stage 'Cloning Git'
+  git credentialsId:'jenkins-server-local', url:'gitgit@github.com:kamleshdv/django-todo-cicd.git', branch:'main'
+
+
+//------------------------------------------------------Building-------------------------------------------------------------------//
+
+ stage 'Building Image For Admin'
+   sh '525068421702.dkr.ecr.ca-central-1.amazonaws.com/kamal:main .'
+
+
+//-------------------------------------------------------Pushing To ECR ------------------------------------------------------------//
+
+ stage 'Push Image To ECR'
+    sh 'docker push 525068421702.dkr.ecr.ca-central-1.amazonaws.com/kamal:main'
+
+//------------------------------------------------------Code Deploying ------------------------------------------------------------//
+
+//    stage 'Deploy Code On API'
+//      sh 'cd /opt/v2/deployment && sudo ansible-playbook dev-api.yml --tags code-deploy -e image_tag=$APP_ENV -e maintenance_enabled=$maintenance_enabled -e maintenance_disabled=$maintenance_disabled'
+}
+
+
+
+
+
+
+
+
