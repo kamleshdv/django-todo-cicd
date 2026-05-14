@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "django-todo-app"
-        CONTAINER_NAME = "django-todo-container"
+        CONTAINER_NAME = "django-todo-app"
         APP_PORT = "8000"
     }
 
